@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Familiada</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="container" style="height:100vh; width:100vh;">
+        <div class="row align-items-center" style="height:100%; width:100%;">
+            <div class="row justify-content-center align-items-center border" style="height:50%; width:100%; background-color:black; outline:4vh; outline-style:ridge; outline-color:orange;">
+                <div class="container familiada-font-small">
+                    <div class="row">
+                        <div class="col-sm text-left">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">back</a>
+                        </div>
+                        <div class="col-sm">
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+

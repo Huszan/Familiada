@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<div class="row justify-content-end">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    }
+    else
+    {
+        //Login form
+
+        <div class="dropdown">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Login
+            </button>
+            <form class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                <div class="form-group">
+                    <label for="dropdownFormLogin">Username</label>
+                    <input type="text" class="form-control" id="dropdownFormLogin" placeholder="Login">
+                </div>
+                <div class="form-group">
+                    <label for="dropdownFormPassword">Password</label>
+                    <input type="password" class="form-control" id="dropdownFormPassword" placeholder="Password">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                    <label class="form-check-label" for="dropdownCheck">
+                        Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div>
+
+        //Register form
+
+        <div class="dropdown">
+            <button class="btn btn-warning dropdown-toggle mx-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Register
+            </button>
+            <form class="dropdown-menu p-2">
+                <div class="form-group">
+                    <label for="dropdownFormLogin">Username</label>
+                    <input type="text" class="form-control" id="dropdownFormLogin" placeholder="Login">
+                </div>
+                <div class="form-group">
+                    <label for="dropdownFormEmail">Email</label>
+                    <input type="email" class="form-control" id="dropdownFormEmail" placeholder="email@mail.com">
+                </div>
+                <div class="form-group">
+                    <label for="dropdownFormPassword">Password</label>
+                    <input type="password" class="form-control" id="dropdownFormPassword" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-success">Register</button>
+            </form>
+        </div>
+    }
+</div>
+
