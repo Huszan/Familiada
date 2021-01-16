@@ -11,8 +11,9 @@
 
     <div class="container" style="height:100vh; width:100vh;">
         <div class="row align-items-center" style="height:100%; width:100%;">
-            <div class="row justify-content-center align-items-center border" style="height:50%; width:100%; background-color:black; outline:4vh; outline-style:ridge; outline-color:orange;">
-                <div class="container familiada-font-small">
+            <div class="container row border align-items-start justify-content-center" 
+                 style="height:50%; width:100%; min-height:480px; min-width:550px; background-color:black; outline:4vh; outline-style:ridge; outline-color:orange;">
+                <div class="container familiada-font-small" style="margin-top:12px;">
                     <div class="row">
                         <div class="col-sm text-left">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">back</a>
@@ -22,7 +23,9 @@
                         </div>
                     </div>
                 </div>
-                @RenderBody()
+                <div class="row align-items-center justify-content-center" style="margin-bottom:12px;">
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
@@ -33,5 +36,8 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+
 
 

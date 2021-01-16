@@ -1,4 +1,5 @@
-﻿body {
+﻿
+body {
 }
 
 @font-face {
@@ -9,18 +10,22 @@
 a {
     color: orange;
 }
+
 .familiada-font-big {
     font-family: 'familiadaFont';
     color: orange;
-    font-size: 80px;
+    font-size: 60px;
 }
+
 .familiada-font-small {
     font-family: 'familiadaFont';
     color: orange;
     font-size: 20px;
 }
+
 .familiada-font {
     font-family: 'familiadaFont';
     color: orange;
     font-size: 40px;
 }
+
