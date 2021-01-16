@@ -10,22 +10,22 @@ body {
 a {
     color: orange;
 }
-
-.familiada-font-big {
-    font-family: 'familiadaFont';
-    color: orange;
-    font-size: 60px;
+h1 {
+    font-size: 600%;
 }
-
-.familiada-font-small {
-    font-family: 'familiadaFont';
-    color: orange;
-    font-size: 20px;
+h2 {
+    font-size: 350%;
+}
+h3 {
+    font-size: 250%;
+}
+h4 {
+    font-size: 150%;
 }
 
 .familiada-font {
     font-family: 'familiadaFont';
     color: orange;
-    font-size: 40px;
+    font-size: 12px;
 }
 

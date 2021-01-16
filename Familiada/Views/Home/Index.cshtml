@@ -1,10 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<link rel="stylesheet" href="~/css/index.css" />
 
-<div class="familiada-font-big container text-center">FAMILIADA</div>
-<a class="familiada-font container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Start Game</a>
-<a class="familiada-font container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Continue Game</a>
-<a class="familiada-font container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Achievements">Achievements</a>
-<a class="familiada-font container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h1 class="familiada-font-big container text-center">FAMILIADA</h1>
+<h2>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Start Game</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Continue Game</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Statistics">Statistics</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Achievements">Achievements</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+    }
+    else
+    {
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Start Game</a>
+        <a class="container text-center nav-link" style="color:darkgray">Continue Game</a>
+        <a class="container text-center nav-link" style="color:darkgray">Statistics</a>
+        <a class="container text-center nav-link" style="color:darkgray">Achievements</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+    }
+</h2>
