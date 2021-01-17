@@ -1,4 +1,8 @@
+using AutoMapper;
+using Familiada.Contracts;
 using Familiada.Data;
+using Familiada.Repository;
+using Familiada.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +34,14 @@ namespace Familiada
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            // Add references for Repository and Contracts to Startup file
+            services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IAnswerRepository, AnswerRepository>();
+
+            services.AddAutoMapper(typeof(Maps));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();

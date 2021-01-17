@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Familiada.Models;
 
 namespace Familiada.Data
 {
@@ -12,5 +13,14 @@ namespace Familiada.Data
             : base(options)
         {
         }
+
+        public DbSet<User> Usersn { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Familiada.Models.GameVM> GameVM { get; set; }
+        public DbSet<Familiada.Models.AnswerVM> AnswerVM { get; set; }
+        public DbSet<Familiada.Models.QuestionVM> QuestionVM { get; set; }
+
     }
 }

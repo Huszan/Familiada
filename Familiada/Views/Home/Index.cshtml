@@ -10,16 +10,15 @@
 <h2>
     @if (SignInManager.IsSignedIn(User))
     {
-        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Start Game</a>
-        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Continue Game</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Play</a>
         <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Statistics">Statistics</a>
         <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Achievements">Achievements</a>
         <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="CRUD">CRUD</a>
     }
     else
     {
-        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Start Game</a>
-        <a class="container text-center nav-link" style="color:darkgray">Continue Game</a>
+        <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Index">Play</a>
         <a class="container text-center nav-link" style="color:darkgray">Statistics</a>
         <a class="container text-center nav-link" style="color:darkgray">Achievements</a>
         <a class="container text-center nav-link" asp-area="" asp-controller="Home" asp-action="Credits">Credits</a>

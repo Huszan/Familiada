@@ -1,4 +1,5 @@
 ﻿using Familiada.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -33,6 +34,11 @@ namespace Familiada.Controllers
             return View();
         }
         public IActionResult Statistics()
+        {
+            return View();
+        }
+
+        public IActionResult CRUD()
         {
             return View();
         }
