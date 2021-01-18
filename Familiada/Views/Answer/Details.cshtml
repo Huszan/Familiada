@@ -1,0 +1,37 @@
+﻿@model Familiada.Models.AnswerVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="container">Details</h1>
+
+<div class="container row">
+    <h3 class="col-sm">
+        @Html.DisplayNameFor(model => model.AnswerText) :
+    </h3>
+    <h3 class="col-sm">
+        @Html.DisplayFor(model => model.AnswerText)
+    </h3>
+</div>
+<div class="container row">
+    <h3 class="col-sm">
+        @Html.DisplayNameFor(model => model.Points) : 
+    </h3>
+    <h3 class="col-sm">
+        @Html.DisplayFor(model => model.Points)
+    </h3>
+</div>
+<div class="container row">
+    <h3 class="col-sm">
+        @Html.DisplayNameFor(model => model.Question) : 
+    </h3>
+    <h3 class="col-sm">
+        @Html.DisplayFor(model => model.QuestionId)
+    </h3>
+</div>
+
+<div class="container text-center" style="margin-top:12px;">
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

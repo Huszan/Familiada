@@ -41,6 +41,12 @@ namespace Familiada.Repository
             return answer;
         }
 
+        public bool isExists(int id)
+        {
+            var exists = _db.Answers.Any(q => q.Id == id);
+            return exists;
+        }
+
         public bool Save()
         {
             var changes = _db.SaveChanges();

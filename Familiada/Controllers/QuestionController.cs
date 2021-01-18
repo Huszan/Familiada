@@ -34,7 +34,13 @@ namespace Familiada.Controllers
         // GET: QuestionController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var question = _repo.FindById(id);
+            var model = _mapper.Map<QuestionVM>(question);
+            return View(model);
         }
 
         // GET: QuestionController/Create
@@ -46,10 +52,22 @@ namespace Familiada.Controllers
         // POST: QuestionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(QuestionVM model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var question = _mapper.Map<Question>(model);
+                var isSuccess = _repo.Create(question);
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -61,20 +79,39 @@ namespace Familiada.Controllers
         // GET: QuestionController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var question = _repo.FindById(id);
+            var model = _mapper.Map<QuestionVM>(question);
+            return View(model);
         }
 
         // POST: QuestionController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, QuestionVM model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var question = _mapper.Map<Question>(model);
+                var isSuccess = _repo.Update(question);
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ModelState.AddModelError("", "Something went wrong...");
                 return View();
             }
         }
@@ -82,16 +119,34 @@ namespace Familiada.Controllers
         // GET: QuestionController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (!_repo.isExists(id))
+            {
+                return NotFound();
+            }
+            var question = _repo.FindById(id);
+            var model = _mapper.Map<QuestionVM>(question);
+            return View(model);
         }
 
         // POST: QuestionController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, QuestionVM model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var question = _mapper.Map<Question>(model);
+                var isSuccess = _repo.Delete(question);
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch

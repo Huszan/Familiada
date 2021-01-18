@@ -43,7 +43,13 @@ namespace Familiada.Repository
 
         public ICollection<Question> GetAnswersByQuestionId(int id)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //TODO
+        }
+
+        public bool isExists(int id)
+        {
+            var exists = _db.Questions.Any(q => q.Id == id);
+            return exists;
         }
 
         public bool Save()

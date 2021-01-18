@@ -11,7 +11,8 @@ namespace Familiada.Models
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public GameVM Game { get; set; }
-        public int GameId { get; set; }
+        public int Highscore { get; set; }
+        public int PointsScored { get; set; }
+        public int GamesPlayed { get; set; }
     }
 }

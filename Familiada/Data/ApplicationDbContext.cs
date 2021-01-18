@@ -21,6 +21,7 @@ namespace Familiada.Data
         public DbSet<Familiada.Models.GameVM> GameVM { get; set; }
         public DbSet<Familiada.Models.AnswerVM> AnswerVM { get; set; }
         public DbSet<Familiada.Models.QuestionVM> QuestionVM { get; set; }
+        public DbSet<Familiada.Models.UserVM> UserVM { get; set; }
 
     }
 }

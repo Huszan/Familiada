@@ -9,8 +9,8 @@ namespace Familiada.Data
 {
     public class User : IdentityUser
     {
-        [ForeignKey("GameId")]
-        public Game Game { get; set; }
-        public int GameId { get; set; }
+        public int Highscore;
+        public int PointsScored;
+        public int GamesPlayed;
     }
 }

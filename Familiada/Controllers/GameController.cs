@@ -13,19 +13,19 @@ namespace Familiada.Controllers
 {
     public class GameController : Controller
     {
-        private readonly IGameRepository _repo;
+        private readonly IGameRepository _gamerepo;
         private readonly IMapper _mapper;
 
-        public GameController(IGameRepository repo, IMapper mapper)
+        public GameController(IGameRepository gamerepo, IMapper mapper)
         {
-            _repo = repo;
+            _gamerepo = gamerepo;
             _mapper = mapper;
         }
 
         // GET: GameController
         public ActionResult Index()
         {
-            var games = _repo.FindAll().ToList();
+            var games = _gamerepo.FindAll().ToList();
             var model = _mapper.Map<List<Game>, List<GameVM>>(games);
             return View(model);
         }
@@ -33,7 +33,13 @@ namespace Familiada.Controllers
         // GET: GameController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_gamerepo.isExists(id))
+            {
+                return NotFound();
+            }
+            var game = _gamerepo.FindById(id);
+            var model = _mapper.Map<GameVM>(game);
+            return View(model);
         }
 
         // GET: GameController/Create
@@ -45,10 +51,25 @@ namespace Familiada.Controllers
         // POST: GameController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(GameVM model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var game = _mapper.Map<Game>(model);
+                game.Points = 0;
+                game.Tries = 3;
+                game.Finished = false;
+                var isSuccess = _gamerepo.Create(game);
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -60,43 +81,80 @@ namespace Familiada.Controllers
         // GET: GameController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            if (!_gamerepo.isExists(id))
+            {
+                return NotFound();
+            }
+            var game = _gamerepo.FindById(id);
+            var model = _mapper.Map<GameVM>(game);
+            return View(model);
         }
 
         // POST: GameController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, GameVM model)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                var game = _mapper.Map<Game>(model);
+                var isSuccess = _gamerepo.Update(game);
+                if (!isSuccess)
+                {
+                    ModelState.AddModelError("", "Something went wrong...");
+                    return View(model);
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ModelState.AddModelError("", "Something went wrong...");
                 return View();
             }
         }
 
-        // GET: GameController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: GameController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
+            // GET: GameController/Delete/5
+            public ActionResult Delete(int id)
             {
-                return RedirectToAction(nameof(Index));
+                if (!_gamerepo.isExists(id))
+                {
+                    return NotFound();
+                }
+                var game = _gamerepo.FindById(id);
+                var model = _mapper.Map<GameVM>(game);
+                return View(model);
             }
-            catch
+
+            // POST: GameController/Delete/5
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public ActionResult Delete(int id, GameVM model)
             {
-                return View();
+                try
+                {
+                    if (!ModelState.IsValid)
+                    {
+                        return View(model);
+                    }
+                    var game = _mapper.Map<Game>(model);
+                    var isSuccess = _gamerepo.Delete(game);
+                    if (!isSuccess)
+                    {
+                        ModelState.AddModelError("", "Something went wrong...");
+                        return View(model);
+                    }
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
         }
     }
-}
