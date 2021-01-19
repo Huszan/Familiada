@@ -29,3 +29,12 @@ h4 {
     font-size: 12px;
 }
 
+.nav-link > .active > a {
+    color: green;
+    background-color: chartreuse;
+}
+
+a:hover {
+    color: orangered;
+}
+

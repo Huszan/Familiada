@@ -5,7 +5,7 @@
 <div class="row float-right">
     @if (SignInManager.IsSignedIn(User))
     {
-        <h4><a class="container nav-link">Hello @User.Identity.Name!</a></h4>
+        <h4><a class="container nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a></h4>
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button type="submit" class="nav-link btn btn-outline-warning">Logout</button>
         </form>  
