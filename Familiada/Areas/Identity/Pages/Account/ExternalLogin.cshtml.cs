@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Familiada.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -48,9 +49,14 @@ namespace Familiada.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
             [EmailAddress]
             public string Email { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [StringLength(18, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
+            [Display(Name = "Username")]
+            public string UserName { get; set; }
         }
 
         public IActionResult OnGetAsync()
@@ -101,7 +107,7 @@ namespace Familiada.Areas.Identity.Pages.Account
                 {
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        UserName = info.Principal.FindFirstValue(ClaimTypes.Name)
                     };
                 }
                 return Page();
@@ -121,7 +127,7 @@ namespace Familiada.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new Player { UserName = Input.UserName, Email = Input.UserName, GamesPlayed = 0, Highscore = 0, PointsScored = 0 };
 
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)

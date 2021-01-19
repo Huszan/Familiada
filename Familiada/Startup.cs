@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Familiada
 {
@@ -31,6 +32,21 @@ namespace Familiada
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/account/google-login";
+                })
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "110025701711-tqanctn9cf3b14m9r8lo38p4mumfro7g.apps.googleusercontent.com";
+                    options.ClientSecret = "STy6xItJz1jsEL1xwEjtK_5v";
+                });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
