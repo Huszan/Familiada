@@ -29,6 +29,11 @@ namespace Familiada.Controllers
         {
             return View();
         }
+        [Authorize]
+        public IActionResult Play()
+        {
+            return View();
+        }
 
         public IActionResult Credits()
         {
