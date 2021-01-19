@@ -1,4 +1,5 @@
 ﻿using Familiada.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,7 +24,7 @@ namespace Familiada.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Achievements()
         {
             return View();
@@ -33,11 +34,12 @@ namespace Familiada.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult Statistics()
         {
             return View();
         }
-
+        [Authorize(Roles = "Administrator")]
         public IActionResult CRUD()
         {
             return View();

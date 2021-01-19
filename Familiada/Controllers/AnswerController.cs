@@ -2,6 +2,7 @@
 using Familiada.Contracts;
 using Familiada.Data;
 using Familiada.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Familiada.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AnswerController : Controller
     {
         private readonly IAnswerRepository _repo;
