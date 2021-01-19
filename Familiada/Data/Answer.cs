@@ -15,7 +15,7 @@ namespace Familiada.Data
         [Required]
         public string AnswerText { get; set; }
         [Required]
-        public string Points { get; set; }
+        public int Points { get; set; }
         [ForeignKey("QuestionId")]
         public Question Question { get; set; }
         public int QuestionId { get; set; }

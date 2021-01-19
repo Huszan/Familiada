@@ -15,9 +15,6 @@ namespace Familiada.Data
         [ForeignKey("QuestionId")]
         public Question Question { get; set; }
         public int QuestionId { get; set; }
-        [ForeignKey("UserId")]
-        public IdentityUser User { get; set; }
-        public string UserId { get; set; }
         public int Tries { get; set; }
         public int Points { get; set; }
         public bool Finished { get; set; }

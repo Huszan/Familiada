@@ -17,7 +17,7 @@ namespace Familiada.Models
         public string Points { get; set; }
         public QuestionVM Question { get; set; }
         public int QuestionId { get; set; }
-        [NotMapped]
-        public IEnumerable<SelectListItem> Questions { get; set; } //Dropdown list of questions... i don't know how to use it...
+        //[NotMapped]
+        //public IEnumerable<SelectListItem> Questions { get; set; } //Dropdown list of questions... i don't know how to use it...
     }
 }

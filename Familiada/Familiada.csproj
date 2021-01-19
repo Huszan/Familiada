@@ -12,6 +12,12 @@
     <Compile Remove="Data\Migrations\20210117145826_Fix.Designer.cs" />
     <Compile Remove="Data\Migrations\20210117150036_Fix.cs" />
     <Compile Remove="Data\Migrations\20210117150036_Fix.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210118085356_new.cs" />
+    <Compile Remove="Data\Migrations\20210118085356_new.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210119013438_users.cs" />
+    <Compile Remove="Data\Migrations\20210119013438_users.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210119014738_users.cs" />
+    <Compile Remove="Data\Migrations\20210119014738_users.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,8 +12,8 @@ namespace Familiada.Models
         public int Id { get; set; }
         public QuestionVM Question { get; set; }
         public int QuestionId { get; set; }
-        public UserVM User { get; set; }
-        public string UserId { get; set; }
+        //public UserVM User { get; set; }
+        //public string UserId { get; set; }
         public int Tries { get; set; }
         public int Points { get; set; }
         public bool Finished { get; set; }

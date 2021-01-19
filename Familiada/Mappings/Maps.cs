@@ -13,7 +13,7 @@ namespace Familiada.Mappings
         public Maps()
         {
             CreateMap<Game, GameVM>().ReverseMap();
-            CreateMap<User, UserVM>().ReverseMap();
+            //CreateMap<User, UserVM>().ReverseMap();
             CreateMap<Question, QuestionVM>().ReverseMap();
             CreateMap<Answer, AnswerVM>().ReverseMap();
         }
